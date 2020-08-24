@@ -1,12 +1,12 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform    }   from    '@angular/core';
 
 @Pipe({
-  name: 'truncateText'
+    name                        :   'truncateText'
 })
 export class TruncateTextPipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
+    transform(value: unknown, ...args: unknown[]): unknown {
+        return null;
+    }
 
 }
