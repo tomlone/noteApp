@@ -5,5 +5,7 @@ import { Injectable             }   from    '@angular/core';
 })
 export class NoteService {
 
+    public isMenuOpened         :   boolean             =   true;
+
     constructor() { }
 }
