@@ -1,1 +1,8 @@
-<p>notes works!</p>
+<div class="p-8 pr-0 cursor-pointer">
+    <div class="border-bottom pb-8">
+        <div class="fs-20 fw-600 mt-8 pb-4px">
+            {{note?.header | truncateText: 20 : 'header'}}
+        </div>
+        <div>{{note?.text | truncateText: 40 : 'text' }}</div>
+    </div>
+</div>

@@ -1,1 +1,16 @@
-<p>sidebar works!</p>
+<form [formGroup]='searchForm'>
+    <div class="toolbar-bg pt-16 pr-16 pl-16 pb-12">
+        <input type="text" 
+            placeholder="Search for notes" 
+            formControlName="search"
+            class="search-input"
+        />
+    </div>    
+</form>
+
+<note-component 
+    *ngFor="let note of noteService.notesData$ | async;let i=index;" 
+    [note]='note' (click)='selectedIndex(note, i)'
+>
+</note-component>
+<!-- Helloo -->

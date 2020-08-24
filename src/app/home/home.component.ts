@@ -15,10 +15,13 @@ export class HomeComponent implements OnInit {
     public deviceSize           :   string;
 
     constructor(
-        private noteService     :   NoteService
+        public noteService      :   NoteService
     ) { }
 
     ngOnInit(): void {
+
+        this.initialize();
+
         this._getScreenSize();
         const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
             map(() => this._getScreenSize())
@@ -26,6 +29,26 @@ export class HomeComponent implements OnInit {
         mediaWidth.subscribe();
     }
 
+    private initialize(): void {
+        const mockData          :   any                 =   [{
+            id                  :   1,
+            header              :   'This is mock header 1 for the testing',
+            text                :   'This is the mock text of note 1 for the testing purpose',
+            updatedAt           :   new Date()
+        }, {
+            id                  :   2,
+            header              :   'This is mock header 2 for the testing',
+            text                :   'This is the mock text of note 2 for the testing purpose',
+            updatedAt           :   new Date()
+        }, {
+            id                  :   3,
+            header              :   'This is mock header 3 for the testing',
+            text                :   'This is the mock text of note 3 for the testing purpose',
+            updatedAt           :   new Date()
+        }]
+        this.noteService.notesData$.next(mockData);
+        this.noteService.notesData$.subscribe();
+    }
 
     private _getScreenSize(): any {
         const viewPorts 		: 	any				=	[{

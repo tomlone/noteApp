@@ -1,13 +1,18 @@
-import { Component, OnInit      }   from    '@angular/core';
+import { Component, OnInit, Input      }   from    '@angular/core';
+import { NoteService } from '../../services/note.service';
 
 @Component({
-    selector                    :   'app-notes',
+    selector                    :   'note-component',
     templateUrl                 :   './notes.component.html',
     styleUrls                   :   ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
 
-    constructor() { }
+    @Input('note') note			:	any					=	{};
+
+    constructor(
+        public noteService      :   NoteService
+    ) { }
 
     ngOnInit(): void {
     }
