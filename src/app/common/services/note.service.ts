@@ -1,5 +1,7 @@
 import { Injectable             }   from    '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject        }   from    'rxjs';
+
+import { Note                   }   from    '../models/note.model';
 
 @Injectable({
     providedIn                  :   'root'
@@ -7,10 +9,10 @@ import { BehaviorSubject } from 'rxjs';
 export class NoteService {
 
     public isMenuOpened         :   boolean                 =   true;
-    public notesData$           :   BehaviorSubject<any>    =   new BehaviorSubject([]);
+    public notesData$           :   BehaviorSubject<Note[]>    =   new BehaviorSubject([]);
 
     public selectedIndex        :   number                  =   0;
-    public selectedNote         :   any                     =   null;
+    public selectedNote         :   Note                    =   null;
 
     constructor() {
         
