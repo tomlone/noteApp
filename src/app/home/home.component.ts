@@ -1,4 +1,8 @@
 import { Component, OnInit      }   from    '@angular/core';
+
+import { Observable, fromEvent  }   from    'rxjs';
+import { map 					} 	from 	'rxjs/operators';
+
 import { NoteService            }   from    '../common/services/note.service';
 
 @Component({
@@ -15,6 +19,11 @@ export class HomeComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
+        this._getScreenSize();
+        const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
+            map(() => this._getScreenSize())
+        );
+        mediaWidth.subscribe();
     }
 
 
@@ -45,7 +54,6 @@ export class HomeComponent implements OnInit {
 					this.noteService.isMenuOpened = true;
 				}
 			}
-
 		});
     }
 
