@@ -1,8 +1,13 @@
-<div class="display-flex w-100p h-100vh">
-    <div class="w-100p">
-        <toolbar></toolbar>
+<div class="w-100p">
+    <toolbar></toolbar>
+</div>
+
+<div class="display-flex w-100p h-100vh position-fixed">
+    <div class="nav w-30p border-right" *ngIf='noteService.isMenuOpened'>
+        <sidebar></sidebar>
     </div>
-    <!-- <div>
-        <toolbar></toolbar>
-    </div> -->
+
+    <div class="content ml-0 m-auto h-100p w-100p">
+        <content-component></content-component>
+    </div>
 </div>

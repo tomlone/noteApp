@@ -7,6 +7,8 @@ $secondary                      :   #f1f1f1;
 .display-block { display        :   block !important;   }
 .display-inline-block { display :   inline-block !important;    }
 
+.position-fixed { position      :   fixed !important;   }
+
 .fs-12 { font-size              :   12px !important;    }
 .fs-16 { font-size              :   16px !important;    }
 .fs-20 { font-size              :   20px !important;    }
@@ -121,6 +123,7 @@ $secondary                      :   #f1f1f1;
 
 .border-none { border           :   none !important;    }
 .border-bottom { border-bottom  :   2px solid #f1f1f1 !important;   }
+.border-right { border-right    :   2px solid #f1f1f1 !important;   }
 
 .toolbar-bg { background-color  :   $secondary !important; }
 
@@ -144,4 +147,4 @@ $secondary                      :   #f1f1f1;
 
 .cursor-pointer { cursor        :   pointer !important;     }
 
-body { margin                   :   0px !important;}
+body { margin                   :   0px !important;         }
