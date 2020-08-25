@@ -9,7 +9,9 @@ import { Note                   }   from    '../models/note.model';
 export class NoteService {
 
     public isMenuOpened         :   boolean                 =   true;
-    public notesData$           :   BehaviorSubject<Note[]>    =   new BehaviorSubject([]);
+    
+    public actualNoteData$      :   BehaviorSubject<Note[]> =   new BehaviorSubject([]);   
+    public notesData$           :   BehaviorSubject<Note[]> =   new BehaviorSubject([]);
 
     public selectedIndex        :   number                  =   0;
     public selectedNote         :   Note                    =   null;

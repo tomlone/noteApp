@@ -4,6 +4,9 @@ import { FormGroup,
          FormControl            }   from    '@angular/forms';
 
 import { NoteService            }   from    '../../services/note.service';
+import { combineLatest          }   from    'rxjs';
+import { startWith, map         }   from    'rxjs/operators';
+import { Note                   }   from    '../../models/note.model';
 
 @Component({
     selector                    :   'sidebar',
@@ -20,7 +23,39 @@ export class SidebarComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.searchForm         =   this._buildForm()
+        this.searchForm         =   this._buildForm();
+        let searchResults$      =   combineLatest(
+            this.noteService.actualNoteData$.pipe((startWith([]))), 
+            this.search.valueChanges, 
+            (noteData, searchValue) => {
+            
+                let results         :   Note[]          =   [];
+                if(searchValue) {
+                    console.log('note data in search logic -> ', noteData);
+
+                    (noteData as Array<Note>).map((note: Note) => {
+                        console.log('note inside loop -> ',note);
+                        if(note.header && note.header.includes(searchValue)) {
+                            return results.push(note);
+                        }
+
+                        if(note.text && note.text.includes(searchValue)) {
+                            return results.push(note);
+                        }
+                    });
+
+                } else {
+
+                    results = noteData;
+
+                }
+
+                return results;
+        }).pipe(
+            map(res => this.noteService.notesData$.next(res))
+        );
+
+        searchResults$.subscribe();
     }
 
     private _buildForm(): FormGroup {

@@ -24,12 +24,6 @@ export class HomeComponent implements OnInit {
     ngOnInit(): void {
 
         this.initialize();
-
-        this._getScreenSize();
-        const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
-            map(() => this._getScreenSize())
-        );
-        mediaWidth.subscribe();
     }
 
     private initialize(): void {
@@ -51,16 +45,22 @@ export class HomeComponent implements OnInit {
         // }]
         // this.noteService.notesData$.next(mockData);
         // this.noteService.notesData$.subscribe();
+
         let notes				:	Note[]			=	this.storage.getItem();
 		console.log('notes -> ', notes);
-		// debugger;
 		if(notes && notes.length > 0) {
 			this.noteService.selectedNote	=	notes[0];
 		} else {
 			notes			=	[];
 			notes.push(new Note());
 		}
-		this.noteService.notesData$.next(notes);
+        this.noteService.actualNoteData$.next(notes);
+        this.noteService.notesData$.next(notes);
+        this._getScreenSize();
+        const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
+            map(() => this._getScreenSize())
+        );
+        mediaWidth.subscribe();
     }
 
     private _getScreenSize(): any {

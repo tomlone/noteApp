@@ -40,7 +40,7 @@ export class StorageService {
 			payload			=	[];
 			payload.push(new Note());
 		}
-		this.noteService.notesData$.next(payload);
+		this.noteService.actualNoteData$.next(payload);
 		return payload;
     }
     

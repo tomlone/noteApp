@@ -37,10 +37,8 @@ export class ToolbarComponent implements OnInit {
 		let notes				=	this.noteService.notesData$.getValue();
         notes.unshift(new Note({}));
         this.storage.setItem(notes);
-		this.noteService.notesData$.next(notes);
-		this.noteService.notesData$.subscribe(console.log);
-
-
+		this.noteService.actualNoteData$.next(notes);
+		// this.noteService.actualNoteData$.subscribe(console.log);
     }
 
     public deleteNotesTapped(): void {
