@@ -6,6 +6,8 @@ import { faBars,
          faPlusCircle			} 	from 	'@fortawesome/free-solid-svg-icons';
 
 import { NoteService            }   from    'src/app/common/services/note.service';
+import { StorageService         }   from    'src/app/common/services/storage.service';
+import { Note                   }   from    '../../models/note.model';
 
 @Component({
     selector                    :   'toolbar',
@@ -19,7 +21,8 @@ export class ToolbarComponent implements OnInit {
     faCircle                    :   IconDefinition      =   faPlusCircle;          
 
     constructor(
-        private noteService     :   NoteService
+        private noteService     :   NoteService,
+        private storage         :   StorageService
     ) { }
 
     ngOnInit(): void {
@@ -31,11 +34,23 @@ export class ToolbarComponent implements OnInit {
     }
 
     public createNotesTapped(): void {
+		let notes				=	this.noteService.notesData$.getValue();
+        notes.unshift(new Note({}));
+        this.storage.setItem(notes);
+		this.noteService.notesData$.next(notes);
+		this.noteService.notesData$.subscribe(console.log);
+
 
     }
 
     public deleteNotesTapped(): void {
-
+        let afterNoteRemoved	=	this.storage.deleteItem(this.noteService.notesData$.getValue(), this.noteService.selectedIndex);
+		// debugger;
+		if(afterNoteRemoved && afterNoteRemoved.length > 0) {
+			this.storage.setItem(afterNoteRemoved);
+		} else {
+			this.storage.clearStorage();
+		}
     }
 
 }

@@ -4,6 +4,8 @@ import { Observable, fromEvent  }   from    'rxjs';
 import { map 					} 	from 	'rxjs/operators';
 
 import { NoteService            }   from    '../common/services/note.service';
+import { StorageService         }   from    '../common/services/storage.service';
+import { Note                   }   from    '../common/models/note.model';
 
 @Component({
     selector                    :   'app-home',
@@ -15,7 +17,8 @@ export class HomeComponent implements OnInit {
     public deviceSize           :   string;
 
     constructor(
-        public noteService      :   NoteService
+        public noteService      :   NoteService,
+        private storage         :   StorageService
     ) { }
 
     ngOnInit(): void {
@@ -30,24 +33,34 @@ export class HomeComponent implements OnInit {
     }
 
     private initialize(): void {
-        const mockData          :   any                 =   [{
-            id                  :   1,
-            header              :   'This is mock header 1 for the testing',
-            text                :   'This is the mock text of note 1 for the testing purpose',
-            updatedAt           :   new Date()
-        }, {
-            id                  :   2,
-            header              :   'This is mock header 2 for the testing',
-            text                :   'This is the mock text of note 2 for the testing purpose',
-            updatedAt           :   new Date()
-        }, {
-            id                  :   3,
-            header              :   'This is mock header 3 for the testing',
-            text                :   'This is the mock text of note 3 for the testing purpose',
-            updatedAt           :   new Date()
-        }]
-        this.noteService.notesData$.next(mockData);
-        this.noteService.notesData$.subscribe();
+        // const mockData          :   any                 =   [{
+        //     id                  :   1,
+        //     header              :   'This is mock header 1 for the testing',
+        //     text                :   'This is the mock text of note 1 for the testing purpose',
+        //     updatedAt           :   new Date()
+        // }, {
+        //     id                  :   2,
+        //     header              :   'This is mock header 2 for the testing',
+        //     text                :   'This is the mock text of note 2 for the testing purpose',
+        //     updatedAt           :   new Date()
+        // }, {
+        //     id                  :   3,
+        //     header              :   'This is mock header 3 for the testing',
+        //     text                :   'This is the mock text of note 3 for the testing purpose',
+        //     updatedAt           :   new Date()
+        // }]
+        // this.noteService.notesData$.next(mockData);
+        // this.noteService.notesData$.subscribe();
+        let notes				:	Note[]			=	this.storage.getItem();
+		console.log('notes -> ', notes);
+		// debugger;
+		if(notes && notes.length > 0) {
+			this.noteService.selectedNote	=	notes[0];
+		} else {
+			notes			=	[];
+			notes.push(new Note());
+		}
+		this.noteService.notesData$.next(notes);
     }
 
     private _getScreenSize(): any {
