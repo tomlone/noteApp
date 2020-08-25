@@ -11,7 +11,7 @@ import { Note                   }   from    '../../models/note.model';
     styleUrls                   :   ['./content.component.scss']
 })
 export class ContentComponent implements OnInit {
-
+    
     constructor(
         public noteService      :   NoteService,
         private storage         :   StorageService
