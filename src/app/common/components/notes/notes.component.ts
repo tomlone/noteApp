@@ -9,12 +9,17 @@ import { NoteService } from '../../services/note.service';
 export class NotesComponent implements OnInit {
 
     @Input('note') note			:	any					=	{};
+    @Input('index') index       :  number               =   0;
 
     constructor(
         public noteService      :   NoteService
     ) { }
 
     ngOnInit(): void {
+    }
+
+    ngOnChanges(): void {
+        // console.log({note: this.note, index: this.index, selectedIndex: this.noteService.selectedIndex});
     }
 
 }

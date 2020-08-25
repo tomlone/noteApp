@@ -23,8 +23,10 @@ export class ContentComponent implements OnInit {
 
     private initialize(): void {
         this.noteService.notesData$.subscribe(res => {
-            console.log('note service response -> ', res);
-            console.log('selected index -> ', this.noteService.selectedIndex);
+
+            // console.log('note service response -> ', res);
+            // console.log('selected index -> ', this.noteService.selectedIndex);
+            
             if(res.length == 1) {
                 if(!res[0].header) {
                     let header      =   document.getElementById('noteHeader');
@@ -40,7 +42,6 @@ export class ContentComponent implements OnInit {
     }
 
     public getDate(): Date {
-		// return new Date();
 		if(this.noteService.selectedNote && this.noteService.selectedNote.updatedAt) {
 			return new Date(this.noteService.selectedNote.updatedAt);
 		} else {
@@ -53,10 +54,9 @@ export class ContentComponent implements OnInit {
 		type					?: 	'header' | 'text'
 	): void {
 
-		let payload				:	Note   			=	new Note({});				
 		let notes				:	Note[]			=	this.noteService.notesData$.getValue();
 		
-		console.log(ev.path[0].innerText, type);
+		// console.log(ev.path[0].innerText, type);
     
         if(type === 'header') {
             notes[this.noteService.selectedIndex].header    =   ev.path[0].innerText;

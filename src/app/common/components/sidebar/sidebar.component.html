@@ -10,7 +10,7 @@
 
 <note-component 
     *ngFor="let note of noteService.notesData$ | async;let i=index;" 
-    [note]='note' (click)='selectedIndex(note, i)'
+    [note]='note' [index]='i' (click)='selectedIndex(note, i)'
 >
 </note-component>
 <!-- Helloo -->

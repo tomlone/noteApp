@@ -1,13 +1,13 @@
-<div class="p-8 pr-0 cursor-pointer">
-    <div class="border-bottom pb-8">
-        <div class="fs-20 fw-600 mt-8 pb-4px">
+<div class="pl-8 cursor-pointer" [ngClass]="{ 'note-selected': noteService.selectedIndex === index }">
+    <div class="border-bottom pt-8 pb-8">
+        <div class="fs-20 fw-600 pb-4px">
             {{note?.header | truncateText: 20 : 'header'}}
         </div>
         <div class="fs-12 text-color">
             <span class="fs-12 text-color">
-                {{note?.updatedAt | date : 'shortTime'}} 
+                {{note?.updatedAt | date : 'shortTime' }} - 
             </span>
-            {{note?.text | truncateText: 50 : 'text' }}
+            {{ note?.text | truncateText: 50 : 'text' }}
         </div>
     </div>
 </div>

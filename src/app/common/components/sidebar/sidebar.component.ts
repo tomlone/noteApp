@@ -67,7 +67,7 @@ export class SidebarComponent implements OnInit {
     public selectedIndex(note: any, index: number): void {
         this.noteService.selectedIndex  =   index;
         this.noteService.selectedNote   =   note;
-        console.log('selected data -> ', {note: this.noteService.selectedNote, index: this.noteService.selectedIndex});
+        // console.log('selected data -> ', {note: this.noteService.selectedNote, index: this.noteService.selectedIndex});
     }
 
     get search(): FormControl {

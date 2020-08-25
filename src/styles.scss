@@ -123,7 +123,7 @@ $dark_bg                        :   #0A1014;
 
 .border-none { border           :   none !important;    }
 .border-bottom { border-bottom  :   2px solid #f1f1f1 !important;   }
-.border-right { border-right    :   2px solid #f1f1f1 !important;   }
+.border-right { border-right    :   1px solid #f1f1f1 !important;   }
 
 .toolbar-bg { background-color  :   $dark_bg !important;    }
 .searchbox-bg { background-color:   $secondary !important;  }
@@ -158,6 +158,8 @@ $dark_bg                        :   #0A1014;
     opacity                     :   0.8;
     color                       :   white;
 }
+
+.note-selected { background     :   bisque !important;      }
 
 .text-color { color             :   $primary !important;    }
 
