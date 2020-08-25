@@ -45,8 +45,10 @@ export class ToolbarComponent implements OnInit {
         let afterNoteRemoved	=	this.storage.deleteItem(this.noteService.notesData$.getValue(), this.noteService.selectedIndex);
 		// debugger;
 		if(afterNoteRemoved && afterNoteRemoved.length > 0) {
-			this.storage.setItem(afterNoteRemoved);
+            this.storage.setItem(afterNoteRemoved);
+            // this.setDefaultNote();
 		} else {
+            // this.setDefaultNote();
 			this.storage.clearStorage();
 		}
     }

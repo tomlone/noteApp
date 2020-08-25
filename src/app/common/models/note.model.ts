@@ -5,7 +5,7 @@ export class Note {
     public updatedAt            :   Date;
 
     constructor(obj             :   any             =   {}) {
-        this.id                 =   obj.id          ||  '';
+        this.id                 =   obj.id          ||  this.generateId();
         this.header             =   obj.header      ||  '';
         this.text               =   obj.text        ||  '';
         this.updatedAt          =   this.parseDate(obj.updatedAt)
@@ -21,11 +21,7 @@ export class Note {
 
     }
 
+    private generateId(): string {
+        return Math.random().toString().substring(2)+(new Date()).getTime().toString();
+    }
 }
-
-export interface NoteInterface {
-    id                          :   string;
-    header                      :   string;
-    text                        :   string;
-    updatedAt                   :   Date;
-}   

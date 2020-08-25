@@ -39,8 +39,8 @@ export class StorageService {
 		} else {
 			payload			=	[];
 			payload.push(new Note());
-		}
-		this.noteService.actualNoteData$.next(payload);
+        }
+		this.noteService.notesData$.next(payload);
 		return payload;
     }
     

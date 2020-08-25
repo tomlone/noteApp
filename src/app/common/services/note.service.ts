@@ -16,8 +16,13 @@ export class NoteService {
     public selectedIndex        :   number                  =   0;
     public selectedNote         :   Note                    =   null;
 
-    constructor() {
-        
-    }
+    constructor() {   }
+
+    // public setDefaultNote(): void {
+    //     let note            :   Note[]     =   [];
+    //     note.push(new Note({}));
+    //     this.actualNoteData$.next(note);
+    //     this.notesData$.next(note);
+    // }
 
 }
