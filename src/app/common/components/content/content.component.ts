@@ -55,8 +55,6 @@ export class ContentComponent implements OnInit {
 	): void {
 
 		let notes				:	Note[]			=	this.noteService.notesData$.getValue();
-		
-		// console.log(ev.path[0].innerText, type);
     
         if(type === 'header') {
             notes[this.noteService.selectedIndex].header    =   ev.path[0].innerText;
