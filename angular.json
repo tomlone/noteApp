@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "notesApp": {
+    "notes-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
