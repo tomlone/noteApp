@@ -30,23 +30,18 @@ export class ToolbarComponent implements OnInit {
 
     public toggleMenu(): void {
         this.noteService.isMenuOpened   =   !this.noteService.isMenuOpened;
-        // console.log('menu toggle value -> ', this.noteService.isMenuOpened);
     }
 
     public createNotesTapped(): void {
 		let notes				=	this.noteService.notesData$.getValue();
         notes.unshift(new Note({}));
         this.storage.setItem(notes);
+        this.noteService.setNextNote(notes[0]);
 		this.noteService.actualNoteData$.next(notes);
     }
 
     public deleteNotesTapped(): void {
-        let afterNoteRemoved	=	this.storage.deleteItem(this.noteService.notesData$.getValue(), this.noteService.selectedIndex);
-		if(afterNoteRemoved && afterNoteRemoved.length > 0) {
-            this.storage.setItem(afterNoteRemoved);
-		} else {
-			this.storage.clearStorage();
-		}
+        this.storage.deleteItem();
     }
 
 }

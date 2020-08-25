@@ -19,25 +19,30 @@ export class StorageService {
     public setItem(
 		payload					: 	any
 	): void {
-		return window.localStorage.setItem('notes', JSON.stringify(payload));
+		window.localStorage.setItem('notes', JSON.stringify(payload));
     }
 
-    public deleteItem(
-		payload					:	Note[],
-		index					:	number
-	): Note[] {
-		// debugger;
-		payload.splice(index, 1);
-		if(payload && payload.length > 0) {
-			this.noteService.selectedNote	=	payload[0];
+    public deleteItem(): void {
+
+        let notesAfterDeletion  :   Note[]          =   this.noteService.actualNoteData$.getValue().filter((note: Note) => {
+            // console.log('note id -> ',note.id, 'selected id -> ', this.noteService.selectedNote.id);
+            return note.id != this.noteService.selectedNote.id;
+        });
+
+		if(notesAfterDeletion && notesAfterDeletion.length > 0) {
+            this.setItem(notesAfterDeletion);
+            this.noteService.setNextNote(notesAfterDeletion[0]);
 		} else {
-			payload			=	[];
-			payload.push(new Note());
+			this.clearStorage();
+			notesAfterDeletion  =	[];
+            notesAfterDeletion.push(new Note());
+            this.noteService.setNextNote(notesAfterDeletion[0]);
         }
-		this.noteService.notesData$.next(payload);
-		return payload;
+
+        this.noteService.notesData$.next(notesAfterDeletion);
+		this.noteService.actualNoteData$.next(notesAfterDeletion);
     }
-    
+
     public clearStorage(): void {
 		return localStorage.clear();
 	}

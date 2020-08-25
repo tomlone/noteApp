@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
         let notes				:	Note[]			=	this.storage.getItem();
 		// console.log('notes -> ', notes);
 		if(notes && notes.length > 0) {
-			this.noteService.selectedNote	=	notes[0];
+            this.noteService.selectedNote	=	notes[0];
 		} else {
 			notes			=	[];
 			notes.push(new Note());
