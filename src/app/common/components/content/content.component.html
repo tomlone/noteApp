@@ -1,1 +1,24 @@
-<p>content works!</p>
+<div class="m-16">
+    <div class="fs-16 text-center mb-8 text-color">
+        {{ getDate() | date}} at {{getDate() | date: 'shortTime' }}
+    </div>
+
+    <div id="noteHeader" contenteditable='true' 
+        class="fs-20 fw-600 mb-8 border-bottom pb-4px" 
+        data-placeholder='Enter Note Header'
+        [textContent]='noteService.selectedNote?.header'
+        (input)='readAndSetData($event, "header")'
+    >
+    
+    </div>
+
+    <div id="noteText" contenteditable="true" 
+        class="fs-16" 
+        data-placeholder='Enter Note Text'
+        [textContent]="noteService.selectedNote?.text"
+        (input)='readAndSetData($event, "text")'
+    >
+
+    </div>
+
+</div>

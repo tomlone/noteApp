@@ -1,0 +1,12 @@
+#noteHeader:empty::before {
+    color                       :   grey !important;
+    content                     :   attr(data-placeholder);
+    cursor                      :   text !important;
+    font-weight                 :   300 !important;
+}
+
+#noteText:empty::before {
+    color                       :   grey !important;
+    content                     :   attr(data-placeholder);
+    cursor                      :   text !important;
+}

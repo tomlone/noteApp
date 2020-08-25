@@ -3,6 +3,11 @@
         <div class="fs-20 fw-600 mt-8 pb-4px">
             {{note?.header | truncateText: 20 : 'header'}}
         </div>
-        <div>{{note?.text | truncateText: 40 : 'text' }}</div>
+        <div class="fs-12 text-color">
+            <span class="fs-12 text-color">
+                {{note?.updatedAt | date : 'shortTime'}} 
+            </span>
+            {{note?.text | truncateText: 50 : 'text' }}
+        </div>
     </div>
 </div>
