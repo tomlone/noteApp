@@ -4,7 +4,7 @@
 
 <div class="display-flex w-100p h-100vh position-fixed">
     <div class="nav w-30p border-right" *ngIf='noteService.isMenuOpened' 
-        [ngClass]="{'w-100p': deviceSize === 'xs' || deviceSize === 'sm', 'w-40p': deviceSize === 'md'}"
+        [ngClass]="{'w-100p': deviceSize === 'xs' , 'w-50p': deviceSize === 'sm', 'w-40p': deviceSize === 'md'}"
     >
         <sidebar></sidebar>
     </div>
