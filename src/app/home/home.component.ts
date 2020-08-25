@@ -28,8 +28,18 @@ export class HomeComponent implements OnInit {
 
     private initialize(): void {
 
+        this.getAndSetNotesData();
+
+        this._getScreenSize();
+        const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
+            map(() => this._getScreenSize())
+        );
+        mediaWidth.subscribe();
+    } 
+
+    private getAndSetNotesData(): void {
         let notes				:	Note[]			=	this.storage.getItem();
-		console.log('notes -> ', notes);
+		// console.log('notes -> ', notes);
 		if(notes && notes.length > 0) {
 			this.noteService.selectedNote	=	notes[0];
 		} else {
@@ -38,12 +48,6 @@ export class HomeComponent implements OnInit {
 		}
         this.noteService.actualNoteData$.next(notes);
         this.noteService.notesData$.next(notes);
-
-        this._getScreenSize();
-        const mediaWidth        :   Observable<any>     =   fromEvent(window, 'resize').pipe(
-            map(() => this._getScreenSize())
-        );
-        mediaWidth.subscribe();
     }
 
     private _getScreenSize(): any {

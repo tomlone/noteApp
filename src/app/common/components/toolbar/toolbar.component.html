@@ -1,16 +1,16 @@
 <div class="p-16 toolbar-bg display-flex">
     
     <div>
-        <button class="fs-20" (click)='toggleMenu()'>
+        <button class="fs-20 btn" (click)='toggleMenu()'>
             <fa-icon [icon]="faBars"></fa-icon>
         </button>
     </div>
 
     <div class="ml-auto">
-        <button class="fs-20 mr-8" (click)="createNotesTapped()">
+        <button class="fs-20 mr-8 btn" (click)="createNotesTapped()">
             <fa-icon [icon]="faCircle"></fa-icon>
         </button>
-        <button class="fs-20" (click)="deleteNotesTapped()">
+        <button class="fs-20 btn" (click)="deleteNotesTapped()">
             <fa-icon [icon]="faDelete"></fa-icon>
         </button>
     </div>

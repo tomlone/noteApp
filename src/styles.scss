@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 $primary                        :   grey;
 $secondary                      :   #f1f1f1;
-
+$dark_bg                        :   #0A1014;
 
 .display-flex { display         :   flex !important;    }
 .display-block { display        :   block !important;   }
@@ -125,7 +125,8 @@ $secondary                      :   #f1f1f1;
 .border-bottom { border-bottom  :   2px solid #f1f1f1 !important;   }
 .border-right { border-right    :   2px solid #f1f1f1 !important;   }
 
-.toolbar-bg { background-color  :   $secondary !important; }
+.toolbar-bg { background-color  :   $dark_bg !important;    }
+.searchbox-bg { background-color:   $secondary !important;  }
 
 [contenteditable] {
     outline                     :   0px solid transparent;
@@ -141,6 +142,21 @@ $secondary                      :   #f1f1f1;
     box-sizing                  :   border-box;
     outline                     :   none;
     border-radius               :   8px !important;
+}
+
+.btn { 
+    color                       :   white;
+    background                  :   transparent;
+    border                      :   none;
+    outline                     :   none;
+    transition                  :   all 0.5s;
+    cursor                      :   pointer;
+}
+
+.btn:hover {
+    color                       :   $secondary !important;
+    opacity                     :   0.8;
+    color                       :   white;
 }
 
 .text-color { color             :   $primary !important;    }

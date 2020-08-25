@@ -13,12 +13,6 @@ export class StorageService {
     
     public getItem(): Note[] {
 		let notes				=	JSON.parse(localStorage.getItem('notes'));
-		// debugger;
-		// if(notes && notes.length > 0) {
-		// 	return notes;
-		// } else {
-		// 	return [];
-		// }
 		return notes && notes.length > 0 ? notes : [];
 	}
 
